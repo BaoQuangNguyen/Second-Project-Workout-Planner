@@ -1,0 +1,9 @@
+<%- include('../partials/header') %>
+
+<h2>Edit Page</h2>
+
+<form action="/workouts/<%=workout.id%>?_method=PUT" method="POST">
+    <input type="text" name="bodypart" value="<%=workout.bodypart%>"/>
+    <button type="submit">Update Workout</button>
+  </form>
+<%- include('../partials/footer') %>
