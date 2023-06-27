@@ -4,15 +4,13 @@
     <ul>
         <li>
             <a href="/workouts/<%=w.id%>"><%= w.bodypart %></a>
+            <a href="/workouts/<%=w.id%>/edit"><button>Edit</button></a>
+            <form action="/workouts/<%=w.id%>?_method=DELETE" method="POST">
+                <input type="submit" value="Delete Workout"/>
+              </form>
         </li>
-        <a href="/workouts/<%=w.id%>/edit">
-            <button>Edit</button>
-          </a>
 
         
-        <form action="/workouts/<%=w.id%>?_method=DELETE" method="POST">
-            <input type="submit" value="Delete Workout"/>
-          </form>
     </ul>
     <% }) %>
     <a href="/workouts/new">

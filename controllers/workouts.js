@@ -34,27 +34,64 @@ async function edit(req, res) {
       console.log("error");
     }
   }
-async function update(req, res) {
+
+ async function update(req, res) {
   try {
-    await Workout.findByIdAndUpdate(req.params.id, req.body, {new:true})
-    res.redirect(`/workouts/${req.params.id}`);
-  }  catch (err) {
-     res.render(`/workouts/${req.params.id}/edit`, { errorMsg: err.message });
+    const { bodypart, exercises } = req.body;
+    const workout = await Workout.findById(req.params.id)
+    const exercisess = workout.exercises;
+    exercisess.forEach((e, i) => {
+      e.name = req.body[`exercises[${i}].name`]
+      e.reps = req.body[`exercises[${i}].reps`]
+      e.sets = req.body[`exercises[${i}].sets`]
+    }),
+    await workout.save();
+    console.log(req.body)
+
+    const updatedWorkout = await Workout.findByIdAndUpdate(
+      req.params.id,
+      { bodypart, exercises },
+      { new: true }
+    );
+
+    res.redirect(`/workouts/${workout._id}`);
+  } catch (err) {
+    console.log(err)
+    res.render('error', { errorMsg: err.message });
   }
 }
 
+  
+  
+  
+  
+
 async function create(req, res) {
-    for (let key in req.body) {
-      if (req.body[key] === '') delete req.body[key];
+  try {
+    const bodypart = req.body.bodypart;
+    const exercises = [];
+    for (let i = 0; i < 5; i++) {
+      const exerciseName = req.body[`exercise[${i}].name`];
+      const exerciseReps = req.body[`exercise[${i}].reps`];
+      const exerciseSets = req.body[`exercise[${i}].sets`];
+      if (exerciseName && exerciseReps && exerciseSets) {
+        exercises.push({
+          name: exerciseName,
+          reps: parseInt(exerciseReps),
+          sets: parseInt(exerciseSets)
+        });
+      }
     }
-    try {
-      await Workout.create(req.body);
-      res.redirect('/workouts');
-    }
-    catch (err) {
-      res.render('workouts/new', { errorMsg: err.message });
-    }
+    const workout = await Workout.create({
+      bodypart,
+      exercises
+    });
+    res.redirect('/workouts');
+  } catch (err) {
+    res.render('workouts/new', { errorMsg: err.message });
   }
+}
+
 async function deleteWorkout(req, res) {
   try {
     await Workout.findByIdAndRemove(req.params.id);

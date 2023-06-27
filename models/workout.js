@@ -6,16 +6,17 @@ const workoutSchema = new mongoose.Schema( {
         type: String,
         enum: ['Chest', 'Back', 'Legs', 'Arms', 'Shoulders']
     },
-    exercise: {
-        type: Array,
-    },
-    reps: {
-        type: Number,
-    }
-
-
-    
-
+    exercises: [{
+        name: {
+            type: String,
+        },
+        reps: {
+            type: Number,
+        },
+        sets: {
+            type: Number,
+        }
+    }]
 })
 
 module.exports = mongoose.model('Workout', workoutSchema);

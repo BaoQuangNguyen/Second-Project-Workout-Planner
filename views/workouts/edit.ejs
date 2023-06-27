@@ -2,8 +2,30 @@
 
 <h2>Edit Page</h2>
 
-<form action="/workouts/<%=workout.id%>?_method=PUT" method="POST">
-    <input type="text" name="bodypart" value="<%=workout.bodypart%>"/>
+<form action="/workouts/<%= workout._id %>?_method=PUT" method="POST">
+    <label>Body Part
+        <select name="bodypart" value="<%= workout.bodypart %>">
+          <option value="Chest">Chest</option>
+            <option value="Back">Back</option>
+            <option value="Legs">Legs</option>
+            <option value="Arms">Arms</option>
+            <option value="Shoulders">Shoulders</option>
+        </select>
+    </label><br>
+
+    <% workout.exercises.forEach((exercise, i) => { %>
+        <label>Exercise
+            <input type="text" name="exercises[<%= i %>].name" value="<%= exercise.name %>">
+        </label>
+        <label>Reps
+            <input type="number" name="exercises[<%= i %>].reps" min="5" max="20" value="<%= exercise.reps %>">
+        </label>
+        <label>Sets
+            <input type="number" name="exercises[<%= i %>].sets" min="1" max="10" value="<%= exercise.sets %>">
+        </label><br>
+    <% }); %>
+
     <button type="submit">Update Workout</button>
-  </form>
+</form>
+
 <%- include('../partials/footer') %>

@@ -2,10 +2,22 @@
 
 <h1>Show Page</h1>
 <ul>
- <li>
-<h2><%=workout.bodypart%></h2>   
-</li>
+  <li>
+    <h2><%= workout.bodypart %></h2>   
+  </li>
+  <li>
+    <h3>Exercises:</h3>
+    <ul>
+      <% workout.exercises.forEach((exercise) => { %>
+        <li>
+          <strong>Name:</strong> <%= exercise.name %><br>
+          <strong>Reps:</strong> <%= exercise.reps %><br>
+          <strong>Sets:</strong> <%= exercise.sets %><br>
+        </li>
+      <% }) %>
+    </ul>
+  </li>
 </ul>
 
-<a href="/workouts/<%=workout.id%>/edit">Edit Workout?</a>
-<%- include('../partials/footer') %> 
+<a href="/workouts/<%= workout.id %>/edit">Edit Workout?</a>
+<%- include('../partials/footer') %>

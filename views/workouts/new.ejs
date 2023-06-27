@@ -4,21 +4,28 @@
 
 <form action="/workouts" method="POST">
     <label>Body Part
-        <select type="text" name="bodypart">
+        <select name="bodypart">
             <option value="Chest">Chest</option>
             <option value="Back">Back</option>
             <option value="Legs">Legs</option>
             <option value="Arms">Arms</option>
-            <option value="Shoulders"></option>
+            <option value="Shoulders">Shoulders</option>
         </select>
     </label><br>
+    
+    <% for (let i = 0; i < 5; i++) { %>
     <label>Exercise
-        <input type="text" name="exercise">
+        <input type="text" name="exercise[<%= i %>].name">
     </label>
     <label>Reps
-        <input type="number" name="reps" min="5" max="20" placeholder="5-20" style="width:45px">
+        <input type="number" name="exercise[<%= i %>].reps" min="5" max="20" placeholder="5-20" style="width:45px">
+    </label>
+    <label>Sets
+        <input type="number" name="exercise[<%= i %>].sets" min="1" max="10" placeholder="1-10" style="width:45px">
     </label><br>
+    <% } %>
+
     <button type="submit">Add Workout</button>
 </form>
 
-<%- include('../partials/footer') %> 
+<%- include('../partials/footer') %>
