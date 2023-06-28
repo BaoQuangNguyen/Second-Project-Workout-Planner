@@ -1,31 +1,41 @@
 <%- include('../partials/header') %>
 
-<h2>Create New Workout</h2>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+    <div>
 
-<form action="/workouts" method="POST">
-    <label>Body Part
-        <select name="bodypart">
-            <option value="Chest">Chest</option>
-            <option value="Back">Back</option>
-            <option value="Legs">Legs</option>
-            <option value="Arms">Arms</option>
-            <option value="Shoulders">Shoulders</option>
-        </select>
-    </label><br>
-    
-    <% for (let i = 0; i < 5; i++) { %>
-    <label>Exercise
-        <input type="text" name="exercise[<%= i %>].name">
-    </label>
-    <label>Reps
-        <input type="number" name="exercise[<%= i %>].reps" min="5" max="20" placeholder="5-20" style="width:45px">
-    </label>
-    <label>Sets
-        <input type="number" name="exercise[<%= i %>].sets" min="1" max="10" placeholder="1-10" style="width:45px">
-    </label><br>
-    <% } %>
+        <h2 class="mb-5 text-white">Create New Workout</h2>
 
-    <button type="submit">Add Workout</button>
-</form>
+        <form action="/workouts" method="POST" class="my-4">
+            <div class="mb-3">
+                <label class="text-white">Body Part</label>
+                <select name="bodypart" class="form-select bodypart-input">
+                    <option value="Chest">Chest</option>
+                    <option value="Back">Back</option>
+                    <option value="Legs">Legs</option>
+                    <option value="Arms">Arms</option>
+                    <option value="Shoulders">Shoulders</option>
+                </select>
+            </div>
+            <% for (let i = 0; i < 5; i++) { %>
+            <div class="row mb-3">
+                <div class="col-auto">
+                    <label class="text-white">Exercise</label>
+                    <input type="text" name="exercise[<%= i %>].name" class="form-control exercise-input" autocomplete="off">
+                </div>
+                <div class="col-auto">
+                    <label class="text-white">Reps</label>
+                    <input type="number" name="exercise[<%= i %>].reps" min="5" max="20" placeholder="5-20" class="form-control reps-input">
+                </div>
+                <div class="col-auto">
+                    <label class="text-white">Sets</label>
+                    <input type="number" name="exercise[<%= i %>].sets" min="1" max="10" placeholder="1-10" class="form-control sets-input">
+                </div>
+            </div>
+            <% } %>
+            
+            <button type="submit" class="btn btn-primary mt-3">Add Workout</button>
+        </form>
+    </div>
+</div>
 
 <%- include('../partials/footer') %>

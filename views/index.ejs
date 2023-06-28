@@ -1,9 +1,13 @@
 <%- include('./partials/header') %>
 
-<h2>Welcome back User!</h2>
-<h3>How may I help you today?</h3>
+<div class="container">
+  <div class="content-wrapper">
+    <h2 class="text-white mb-3">Welcome back User!</h2>
+    <h3 class="text-white mb-5">How may I help you today?</h3>
 
-<a href="/workouts">Workout Plans</a><br>
-<a href="/workouts/new">Create a Workout Plan</a>
+    <a href="/workouts" class="btn btn-primary mt-4">Workout Plans</a><br>
+    <a href="/workouts/new" class="btn btn-primary mt-4">Create a Workout Plan</a>
+  </div>
+</div>
 
-<%- include('./partials/footer') %> 
+<%- include('./partials/footer') %>
