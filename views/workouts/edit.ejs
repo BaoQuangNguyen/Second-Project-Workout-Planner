@@ -1,31 +1,42 @@
 <%- include('../partials/header') %>
 
-<h2>Edit Page</h2>
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="text-left text-white">
+    <h2 class="mb-5 text-white">Edit Workout</h2>
 
-<form action="/workouts/<%= workout._id %>?_method=PUT" method="POST">
-    <label>Body Part
-        <select name="bodypart" value="<%= workout.bodypart %>">
-          <option value="Chest">Chest</option>
-            <option value="Back">Back</option>
-            <option value="Legs">Legs</option>
-            <option value="Arms">Arms</option>
-            <option value="Shoulders">Shoulders</option>
-        </select>
-    </label><br>
+    <form action="/workouts/<%= workout._id %>?_method=PUT" method="POST">
+        <div class="mb-4">
+            <label for="bodypart">Body Part</label>
+            <select class="form-control text-white bodypart-input-edit" name="bodypart">
+                <option value="Chest">Chest</option>
+                <option value="Back">Back</option>
+                <option value="Legs">Legs</option>
+                <option value="Arms">Arms</option>
+                <option value="Shoulders">Shoulders</option>
+            </select>
+        </div>
 
-    <% workout.exercises.forEach((exercise, i) => { %>
-        <label>Exercise
-            <input type="text" name="exercises[<%= i %>].name" value="<%= exercise.name %>">
-        </label>
-        <label>Reps
-            <input type="number" name="exercises[<%= i %>].reps" min="5" max="20" value="<%= exercise.reps %>">
-        </label>
-        <label>Sets
-            <input type="number" name="exercises[<%= i %>].sets" min="1" max="10" value="<%= exercise.sets %>">
-        </label><br>
-    <% }); %>
+        <% workout.exercises.forEach((exercise, i) => { %>
+            <div class="row mb-3">
+                    <div class="col-auto">
+                        <label for="exercise-<%= i %>" class="text-white">Exercise</label>
+                        <input class="form-control text-white exercise-input-edit" autocomplete="off" type="text" name="exercises[<%= i %>].name" id="exercise-<%= i %>" value="<%= exercise.name %>">
+                    </div>
+                    <div class="col-auto">
+                        <label for="reps-<%= i %>" class="text-white">Reps</label>
+                        <input class="form-control text-white reps-input-edit" type="number" name="exercises[<%= i %>].reps" id="reps-<%= i %>" min="5" max="20" value="<%= exercise.reps %>">
+                    </div>
+                    <div class="col-auto">
+                        <label for="sets-<%= i %>" class="text-white">Sets</label>
+                        <input class="form-control text-white reps-input-edit" type="number" name="exercises[<%= i %>].sets" id="sets-<%= i %>" min="1" max="10" value="<%= exercise.sets %>">
+                    </div>
+                </div>
+            <br>
+        <% }); %>
 
-    <button type="submit">Update Workout</button>
-</form>
+        <button type="submit" class="btn btn-primary">Update Workout</button>
+    </form>
+  </div>
+</div>
 
 <%- include('../partials/footer') %>

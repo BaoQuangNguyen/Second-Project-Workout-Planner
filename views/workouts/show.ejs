@@ -1,23 +1,30 @@
 <%- include('../partials/header') %>
 
-<h1>Show Page</h1>
-<ul>
-  <li>
-    <h2><%= workout.bodypart %></h2>   
-  </li>
-  <li>
-    <h3>Exercises:</h3>
-    <ul>
-      <% workout.exercises.forEach((exercise) => { %>
-        <li>
-          <strong>Name:</strong> <%= exercise.name %><br>
-          <strong>Reps:</strong> <%= exercise.reps %><br>
-          <strong>Sets:</strong> <%= exercise.sets %><br>
-        </li>
-      <% }) %>
-    </ul>
-  </li>
-</ul>
 
-<a href="/workouts/<%= workout.id %>/edit">Edit Workout?</a>
+
+<div class="container d-flex justify-content-center align-items-center vh-100">
+  <div class="text-center">
+    <h1>Workout Details</h1>
+    <ul class="list-unstyled">
+      <li>
+        <h2><%= workout.bodypart %></h2>
+      </li>
+      <li>
+        <h3>Exercises:</h3>
+        <div class="exercise-grid">
+          <% workout.exercises.forEach((exercise) => { %>
+            <div class="exercise-box">
+              <strong><%= exercise.name %><br></strong>
+              <strong>Reps:</strong> <%= exercise.reps %><br>
+              <strong>Sets:</strong> <%= exercise.sets %><br>
+            </div>
+          <% }) %>
+        </div>
+      </li>
+    </ul>
+
+    <a href="/workouts/<%= workout.id %>/edit" class="btn btn-primary">Edit Workout</a>
+  </div>
+</div>
+
 <%- include('../partials/footer') %>

@@ -8,7 +8,7 @@
         <form action="/workouts" method="POST" class="my-4">
             <div class="mb-3">
                 <label class="text-white">Body Part</label>
-                <select name="bodypart" class="form-select bodypart-input">
+                <select name="bodypart" class="form-select bodypart-input-new">
                     <option value="Chest">Chest</option>
                     <option value="Back">Back</option>
                     <option value="Legs">Legs</option>
@@ -20,15 +20,15 @@
             <div class="row mb-3">
                 <div class="col-auto">
                     <label class="text-white">Exercise</label>
-                    <input type="text" name="exercise[<%= i %>].name" class="form-control exercise-input" autocomplete="off">
+                    <input type="text" name="exercise[<%= i %>].name" class="form-control exercise-input-new" autocomplete="off">
                 </div>
                 <div class="col-auto">
                     <label class="text-white">Reps</label>
-                    <input type="number" name="exercise[<%= i %>].reps" min="5" max="20" placeholder="5-20" class="form-control reps-input">
+                    <input type="number" name="exercise[<%= i %>].reps" min="5" max="20" placeholder="5-20" class="form-control reps-input-new">
                 </div>
                 <div class="col-auto">
                     <label class="text-white">Sets</label>
-                    <input type="number" name="exercise[<%= i %>].sets" min="1" max="10" placeholder="1-10" class="form-control sets-input">
+                    <input type="number" name="exercise[<%= i %>].sets" min="1" max="10" placeholder="1-10" class="form-control sets-input-new">
                 </div>
             </div>
             <% } %>

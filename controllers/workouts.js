@@ -26,7 +26,7 @@ async function show(req, res) {
 
 async function edit(req, res) {
     try {
-      const workout = await Workout.findById(req.params.id)
+      const workout = await Workout.findById(req.params.id )
       res.render('workouts/edit', {
         workout
       });
