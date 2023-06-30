@@ -6,6 +6,7 @@ body {
   color: white;
 }
 
+
 a {
   color: #00B7FF;
 }
@@ -17,38 +18,55 @@ a {
   background-color: red;
 }
 
+
 ::-webkit-input-placeholder {
   color: #CCCCCC; 
 }
+
+
 .bodypart-input-new {
   width: 130px;
   background-color: #888888;
 }
+
+
 .bodypart-input-new:focus {
   background-color: #888888;
 }
+
 
 .exercise-input-new {
   width: 250px;
   background-color: #888888;
 }
+
+
 .exercise-input-new:focus {
   background-color: #888888;
 }
+
+
 .reps-input-new {
   width: 80px;
   background-color: #888888;
 }
+
+
 .reps-input-new:focus {
   background-color: #888888;
 }
+
+
 .sets-input-new {
   width: 80px;
   background-color: #888888;
 }
+
+
 .sets-input-new:focus {
   background-color: #888888;
 }
+
 
 .container {
   display: flex;
@@ -57,6 +75,7 @@ a {
   min-height: 100vh;
   margin-top: -50px;
 }
+
 
 .content-wrapper {
   text-align: center;
@@ -69,52 +88,66 @@ a {
 }
 
 
-
-  .exercise-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    grid-gap: 20px;
-  }
-
-  .exercise-box {
-    background-color: #f8f9fa;
-    padding: 10px;
-    border-radius: 5px;
-    color: black;
-  }
-
-
-  .bg-gray {
-    background-color: gray;
+.exercise-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
 }
+
+
+.exercise-box {
+  background-color: #f8f9fa;
+  padding: 10px;
+  border-radius: 5px;
+  color: black;
+}
+
+
+.bg-gray {
+  background-color: gray;
+}
+
 
 .bodypart-input-edit {
   width: 105px;
   background-color: #888888;
 }
+
+
 .bodypart-input-edit:focus {
   width: 130px;
   background-color: #888888;
 }
 
+
 .exercise-input-edit {
   width: 180px;
   background-color: #888888;
 }
+
+
 .exercise-input-edit:focus {
   background-color: #888888;
 }
+
+
 .reps-input-edit {
   width: 60px;
   background-color: #888888;
 }
+
+
 .reps-input-edit:focus {
   background-color: #888888;
 }
+
+
 .sets-input-edit {
   width: 60px;
   background-color: #888888;
 }
+
+
 .sets-input-edit:focus {
   background-color: #888888;
 }

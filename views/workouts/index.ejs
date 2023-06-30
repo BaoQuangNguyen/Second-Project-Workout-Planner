@@ -1,12 +1,14 @@
 <%- include('../partials/header') %>
 
-
+<!-- wrapped everything within a container and added the flexbox property -->
 <div class="container d-flex justify-content-center align-items-center vh-100">
   <div class="text-center">
-    <h2 class="text-white mb-4">Workout List</h2>
+    <h2 class="text-white mb-4">Workout Plans</h2>
     
     <% workouts.forEach(function(w) { %>
+      <!-- Using the card class in bootstrap to put everythiing into a grid or box -->
     <div class="card my-1">
+      <!-- card-body wraps the content inside into the body. Doing this, I'm able to wrap each workout id with the edit and delete button -->
       <div class="card-body">
         <h4 class="card-title"><a href="/workouts/<%= w.id %>"><%= w.bodypart %></a></h4>
         <div class="d-flex justify-content-between align-items-center">
